@@ -15,14 +15,20 @@ reactionTime = NaN;
 isQuit = 0;
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 % deviceIndex = 6;
 KbQueueCreate();
 KbQueueStart();
 =======
+=======
+>>>>>>> Stashed changes
 deviceIndex = [0];
 
 KbQueueCreate(); %(deviceIndex);
 KbQueueStart(); %(deviceIndex);
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 % timeout = P.ISI_Dur;
@@ -39,15 +45,21 @@ Screen('Flip', window);
 while GetSecs < stop
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     [pressed, firstPress] = KbQueueCheck();
 
     
 =======
+=======
+>>>>>>> Stashed changes
     [pressed, firstPress] = KbQueueCheck(); % KbQueueCheck(deviceIndex);
     % [keyIsDown, firstKeyPressTimes, firstKeyReleaseTimes, lastKeyPressTimes, lastKeyReleaseTimes]=PsychHID('KbQueueCheck' [, 11]);
     % disp(pressed);
     % disp(firstPress);
         
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     if pressed
         keyIdx = find(firstPress);
@@ -66,8 +78,13 @@ while GetSecs < stop
                 reactionTime = rt;
                 if P.isEEG
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 Trigger = P.UseTriggers(Info.T_fin(itrial).typicality_idx, Info.T_fin(itrial).category_idx, Info.T_fin(itrial).cond_idx, 1, 2);
                 SendTrigger(Trigger, P.TriggerDuration)
+=======
+                    Trigger = P.UseTriggers(2, 1, Info.T_fin(itrial).cond_idx, Info.T_fin(itrial).category_idx);
+                    SendTrigger(Trigger, P.TriggerDuration)
+>>>>>>> Stashed changes
 =======
                     Trigger = P.UseTriggers(2, 1, Info.T_fin(itrial).cond_idx, Info.T_fin(itrial).category_idx);
                     SendTrigger(Trigger, P.TriggerDuration)

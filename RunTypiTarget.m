@@ -9,7 +9,11 @@ close all;
 
 % participant number, e.g. 01
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 name = 'test_30_10';
+=======
+name = 'pilot21_01';
+>>>>>>> Stashed changes
 =======
 name = 'pilot21_01';
 >>>>>>> Stashed changes

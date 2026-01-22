@@ -125,11 +125,14 @@ P.mem_responseText = ['sicher alt', 'eher alt', 'eher neu', 'sicher neu'];
 % Images
 %  -----------------------------------------------------------------------
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 % P.prop_typ       = 0.4;  % proportion of typical images
 % P.prop_untyp     = 0.2;  % proportion of untypical images
 % P.prop_target    = 0.2;  % proportion of target images
 % P.prop_nontarget = 0.2;  % proportion of nontarget images
 
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 P.prop_typ       = 0.42;  % proportion of typical images
@@ -138,12 +141,18 @@ P.prop_target    = 0.2;  % proportion of target images
 P.prop_nontarget = 0.2;  % proportion of nontarget images
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 % P.prop_typ       = 0.4;  % proportion of typical images
 % P.prop_untyp     = 0.2;  % proportion of untypical images
 % P.prop_target    = 0.2;  % proportion of target images
 % P.prop_nontarget = 0.2;  % proportion of nontarget images
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 switch P.Flavor
@@ -176,7 +185,10 @@ switch P.Flavor
 
         P.stim_extended  = 'stimuli_info_final_TypiT.xlsx';
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         % P.stim_extended  = 'stimuli_info_TypT_pre.xlsx';
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 
