@@ -13,6 +13,7 @@ ODDBALL^2
 9 onset living room oddball old untypical
 10 onset living room oddball old typical
 
+<<<<<<< Updated upstream
 41 response target oddball old
 
 MEMORY^2
@@ -95,3 +96,20 @@ MEMORY
 36 response living room memory old typical
 40 response living room memory new untypical
 40 response living room memory new typical
+=======
+2 response target oddball old
+
+19 onset bedroom memory old
+23 onset bedroom memory new
+27 onset kitchen memory old
+31 onset kitchen memory new
+35 onset living room memory old
+39 onset living room memory new
+
+20 response bedroom memory old
+24 response bedroom memory new
+28 response kitchen memory old
+32 response kitchen memory new
+36 response living room memory old
+40 response living room memory new
+>>>>>>> Stashed changes

@@ -1,4 +1,4 @@
-function [Report, reactionTime] = GetResponse_Odd(imageOnset, toffset, ISI)
+function [Report, reactionTime] = GetResponse_Odd(imageOnset, toffset, ISI, itrial)
 % function [Report, secs] = GetResponse_Odd(imageOnset, toffset)
 
 % timeout determines when to stop polling for responses. 
@@ -14,9 +14,16 @@ Report = 0;
 reactionTime = NaN;
 isQuit = 0;
 
+<<<<<<< Updated upstream
 % deviceIndex = 6;
 KbQueueCreate();
 KbQueueStart();
+=======
+deviceIndex = [0];
+
+KbQueueCreate(); %(deviceIndex);
+KbQueueStart(); %(deviceIndex);
+>>>>>>> Stashed changes
 
 % timeout = P.ISI_Dur;
 timeout = ISI;
@@ -24,22 +31,32 @@ stop = timeout + toffset;
 
 while GetSecs < toffset
     % nothing, just wait
-end
+    end
 
 Screen('DrawTexture', window, DefaultScreen);
 Screen('Flip', window); 
 
 while GetSecs < stop
 
+<<<<<<< Updated upstream
     [pressed, firstPress] = KbQueueCheck();
 
     
+=======
+    [pressed, firstPress] = KbQueueCheck(); % KbQueueCheck(deviceIndex);
+    % [keyIsDown, firstKeyPressTimes, firstKeyReleaseTimes, lastKeyPressTimes, lastKeyReleaseTimes]=PsychHID('KbQueueCheck' [, 11]);
+    % disp(pressed);
+    % disp(firstPress);
+        
+>>>>>>> Stashed changes
     if pressed
         keyIdx = find(firstPress);
         keyName = KbName(keyIdx(1));
         rt = firstPress(keyIdx(1));
         
          % Check key
+         %disp(keyIdx);
+         %disp(keyName);
             if iscell(keyName) % in case multiple keys
                 keyName = keyName{1};
             end
@@ -48,8 +65,13 @@ while GetSecs < stop
                 Report = 1;
                 reactionTime = rt;
                 if P.isEEG
+<<<<<<< Updated upstream
                 Trigger = P.UseTriggers(Info.T_fin(itrial).typicality_idx, Info.T_fin(itrial).category_idx, Info.T_fin(itrial).cond_idx, 1, 2);
                 SendTrigger(Trigger, P.TriggerDuration)
+=======
+                    Trigger = P.UseTriggers(2, 1, Info.T_fin(itrial).cond_idx, Info.T_fin(itrial).category_idx);
+                    SendTrigger(Trigger, P.TriggerDuration)
+>>>>>>> Stashed changes
                 end
                 disp(keyName);
                 return;

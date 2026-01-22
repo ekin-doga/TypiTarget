@@ -12,9 +12,15 @@ for i = 1:n_stim
 
     T(itrial).filename        = image_table.info(this_img).stimulus;
     T(itrial).category        = image_table.info(this_img).category;
+<<<<<<< Updated upstream
     if strcmpi(T(itrial).category, 'target')
         T(itrial).category_idx = 1;
     elseif strcmpi(T(itrial).category, 'nontarget')
+=======
+    if strcmp(T(itrial).category, 'target')
+        T(itrial).category_idx = 1;
+    elseif strcmp(T(itrial).category, 'nontarget')
+>>>>>>> Stashed changes
         T(itrial).category_idx = 2;
     elseif contains(T(itrial).category, 'bedrooms')
         T(itrial).category_idx = 3;

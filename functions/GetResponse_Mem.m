@@ -1,7 +1,7 @@
-function [Report, secs] = GetResponse_Mem(P)
+function [Report, secs] = GetResponse_Mem(itrial)
 
 
-global Info
+global Info P window MemScreen;
 
 secs = 0;
 now = GetSecs;

@@ -4,7 +4,7 @@ function [P] = Parameters(P)
 % If yes, set desired display parameters.
 % If not, use current display settings.
 % ------------------------------------------------------------------------
-P.isEEG          = 0; % if==1: send EEG triggers
+P.isEEG          = 1; % if==1: send EEG triggers
 P.doSkipSyncTest = 1; % if==1: no synctest and normal priority (this is for testing) 
 
 
@@ -38,14 +38,6 @@ else
             P.myWidth       = 1920;
             P.myHeight      = 1080;
             P.myRate        = 120;
-
-        case 'BUSCH15'
-            P.ImagePath = "C:\Users\eilkel\Desktop\TypiTarget\stimuli\";
-            P.PresentScreen = 0;
-            P.myWidth       = 1920;
-            P.myHeight      = 1080;
-            P.myRate        = 100;
-
 
     end
        
@@ -82,11 +74,10 @@ P.mem_cueColor = [98 101 103]; %[180 180 180];
 % Present instructional cues in the lower corners.
 P.cueXoffset = 300;
 P.cueYoffset = 100;
-P.cueMem_Text = {'[sicher alt]', '[sicher neu]'};
-%P.mem_cueCertainOld = ['sicher alt'];
-%P.mem_cueOld        = ['eher alt'];
-%P.mem_cueNew        = ['eher neu'];
-%P.mem_cueCertainNew = ['sicher neu'];
+P.mem_cueCertainOld = ['sicher alt'];
+P.mem_cueOld        = ['eher alt'];
+P.mem_cueNew        = ['eher neu'];
+P.mem_cueCertainNew = ['sicher neu'];
 
 
 %% -----------------------------------------------------------------------
@@ -101,11 +92,7 @@ P.CertainOldKey = KbName('d');
 P.OldKey = KbName('f');
 P.NewKey = KbName('j');
 P.CertainNewKey = KbName('k');
-% P.ResponseKeys = {KbName('d'); KbName('f'); KbName('j'); KbName('k')};
-P.ResponseKeys = {KbName('d'); KbName('k')};
-
-P.LeftKey = KbName('d');
-P.RightKey = KbName('k');
+P.ResponseKeys = {KbName('d'); KbName('f'); KbName('j'); KbName('k')};
 
 
 %% -----------------------------------------------------------------------
@@ -124,27 +111,16 @@ P.mem_responseText = ['sicher alt', 'eher alt', 'eher neu', 'sicher neu'];
 %% -----------------------------------------------------------------------
 % Images
 %  -----------------------------------------------------------------------
-<<<<<<< Updated upstream
-% P.prop_typ       = 0.4;  % proportion of typical images
-% P.prop_untyp     = 0.2;  % proportion of untypical images
-% P.prop_target    = 0.2;  % proportion of target images
-% P.prop_nontarget = 0.2;  % proportion of nontarget images
-
-=======
->>>>>>> Stashed changes
 P.prop_typ       = 0.42;  % proportion of typical images
 P.prop_untyp     = 0.17;  % proportion of untypical images
 P.prop_target    = 0.2;  % proportion of target images
 P.prop_nontarget = 0.2;  % proportion of nontarget images
 
-<<<<<<< Updated upstream
-=======
 % P.prop_typ       = 0.4;  % proportion of typical images
 % P.prop_untyp     = 0.2;  % proportion of untypical images
 % P.prop_target    = 0.2;  % proportion of target images
 % P.prop_nontarget = 0.2;  % proportion of nontarget images
 
->>>>>>> Stashed changes
 
 switch P.Flavor
     case 'training'
@@ -175,10 +151,6 @@ switch P.Flavor
         P.stim_mem       = 'stimuli_info_add_TypT.xlsx';
 
         P.stim_extended  = 'stimuli_info_final_TypiT.xlsx';
-<<<<<<< Updated upstream
-        % P.stim_extended  = 'stimuli_info_TypT_pre.xlsx';
-=======
->>>>>>> Stashed changes
 
         P.n_typ       = ceil(P.prop_typ       * P.n_trials_per_block);
         P.n_untyp     = ceil(P.prop_untyp     * P.n_trials_per_block);
@@ -211,24 +183,15 @@ P.maxISI  = 2.000;
 %  -----------------------------------------------------------------------
 % Trigger parameters
 % triggers 1-255
-% we want to have different information in our triggers, combination of
-% task and condition plus typicality information and event type
+% we want to have different information in our triggers
 % first digit: type of event (1: image onset, 2: response)
 % second digit: task (oddball/memory)
-% third digit: condition (old/new)
-% fourth digit: typicality - typical, untypical
-% fifth digit: scene category (target, nontarget, bedroom, kitchen, living
+% third digit: scene category (target, nontarget, bedroom, kitchen, living
 % room)
-
-% n_triggers = 2 * 2 * 2 * (length(P.scene_categories) + 2);
-n_triggers = 2 * 2 * 2 * 2 * (length(P.scene_categories) + 2);
-% P.UseTriggers = reshape((1:n_triggers), [2 2 2 (length(P.scene_categories) + 2)]);
-% P.UseTriggers = reshape((1:n_triggers), [2 2 2 2 (length(P.scene_categories) + 2)]);
-
-% scene cat, typ idx, cond idx, task, event
-% P.UseTriggers = reshape((1:n_triggers), [(length(P.scene_categories) + 2) 2 2 2 2 ]);
-% typ idx, scene cat, cond idx, task, event
-P.UseTriggers = reshape((1:n_triggers), [2 (length(P.scene_categories) + 2) 2 2 2 ]);
+% P.unavailTriggers = [20 30];
+% P.availTriggers = find(ismember(1:255), P.unavailTriggers);
+n_triggers = 2 * 2 * 2 * (length(P.scene_categories) + 2);
+P.UseTriggers = reshape((1:n_triggers), [2 2 2 (length(P.scene_categories) + 2)]);
 
 P.TriggerDuration = 0.005;
 P.TriggerStartRecording = 120;

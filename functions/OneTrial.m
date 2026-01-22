@@ -56,7 +56,9 @@ end
 % ----------------------------------------------------------------------
 % Prepare images
 % ----------------------------------------------------------------------
-Img = imread(fullfile(P.ImagePath, Info.T_fin(itrial).filename));
+
+Img = imread(strcat(P.ImagePath, Info.T_fin(itrial).filename));
+
 
 ImgTex    = Screen('MakeTexture', window, Img);    
 imageSize = size(Img);
@@ -101,7 +103,7 @@ Pos = [(P.myWidth-imageSize(2))/2 (P.myHeight-imageSize(1))/2 (P.myWidth+imageSi
     
         % Screen('DrawTexture', window, DefaultScreen);
         % Screen('Flip', window, tImageOn+P.ImgDur);
-        [Info.T_fin(itrial).Report, rt_time] = GetResponse_Odd(tImageOn, (tImageOn+P.ImgDur), Info.T_fin(itrial).ISI);
+        [Info.T_fin(itrial).Report, rt_time] = GetResponse_Odd(tImageOn, (tImageOn+P.ImgDur), Info.T_fin(itrial).ISI, itrial);
         
         % secs = 0;
         % now = GetSecs;
@@ -146,6 +148,8 @@ Pos = [(P.myWidth-imageSize(2))/2 (P.myHeight-imageSize(1))/2 (P.myWidth+imageSi
         Info.T_fin(itrial).RT = rt_time - tImageOn;
         Info.T_fin(itrial).target_resp = NaN;
         
+        disp(Info.T_fin(itrial).Report);
+
         % Oddball task
         % did the subject detect the target?
         if Info.T_fin(itrial).Report==99
@@ -154,9 +158,11 @@ Pos = [(P.myWidth-imageSize(2))/2 (P.myHeight-imageSize(1))/2 (P.myWidth+imageSi
         elseif Info.T_fin(itrial).Report==1
             isQuit = false;
             Info.T_fin(itrial).target_resp = 1;
+            disp('report 1, pressed space');
         elseif Info.T_fin(itrial).Report==0
             isQuit = false;
             Info.T_fin(itrial).target_resp = 0;
+            disp('report 0, pressed space');
         end
 
 
@@ -239,7 +245,7 @@ Pos = [(P.myWidth-imageSize(2))/2 (P.myHeight-imageSize(1))/2 (P.myWidth+imageSi
                 SendTrigger(Trigger, P.TriggerDuration)
         end
     
-        [Info.T_fin(itrial).Report, rt_time] = GetResponse_Mem(P);
+        [Info.T_fin(itrial).Report, rt_time] = GetResponse_Mem(itrial);
         Screen('DrawTexture', window, MemScreen);
         Screen('Flip', window); % [VBLTimestamp, t_imageoffset] = 
     
